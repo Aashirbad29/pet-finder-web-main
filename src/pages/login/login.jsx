@@ -26,7 +26,11 @@ const Login = () => {
   };
 
   return (
-    <div className="login-page">
+    <div className="login-page" style={{ display: "flex", flexDirection: "column", alignItems: "center" }}>
+      <header style={{ marginBottom: "20px" }}>
+        <h1>Login to Pet Finder</h1>
+        <p>Welcome back! Please login to your account.</p>
+      </header>
       <Form layout="vertical" name="login-form" style={{ width: 500 }} onFinish={onFinish}>
         <Form.Item label="Email" name="email" rules={[{ required: true, message: "Please input email" }]}>
           <Input />

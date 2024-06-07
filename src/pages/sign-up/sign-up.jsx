@@ -48,8 +48,12 @@ const SignUp = () => {
   };
 
   return (
-    <div className="login-page">
-      <Form layout="vertical" name="login-form" style={{ width: 500 }} onFinish={onFinish}>
+    <div className="sign-up-page" style={{ display: "flex", flexDirection: "column", alignItems: "center" }}>
+      <header style={{ marginBottom: "20px" }}>
+        <h1>Sign Up for Pet Finder</h1>
+        <p>Create your account to start finding and adopting pets.</p>
+      </header>
+      <Form layout="vertical" name="sign-up-form" style={{ width: 500 }} onFinish={onFinish}>
         <Form.Item label="Name" name="name" rules={[{ required: true, message: "Please input name" }]}>
           <Input />
         </Form.Item>
