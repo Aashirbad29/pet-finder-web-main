@@ -10,6 +10,7 @@ import Pets from "./pages/pets/pets";
 import About from "./pages/about/about";
 import SignUp from "./pages/sign-up/sign-up";
 import HomeLayout from "./layout/home-layout";
+import PageNotFound from "./pages/pagenotfound/pagenotfound";
 
 function App() {
   return (
@@ -25,6 +26,7 @@ function App() {
             <Route path="/pets" element={<Pets />} />
             <Route path="/about" element={<About />} />
           </Route>
+          <Route path="*" element={<PageNotFound />} />
 
           <Route element={<ProtectedRoute />}>
             <Route path="/dashboard" element={<DashboardLayout />}>

@@ -35,17 +35,30 @@
   color: white;
   margin-block: 4px;
 }
+
 .hero-container button:hover {
   background-color: goldenrod;
   transition: 0.3s ease-in;
 }
 
-/* mobile view */
+/* Tablet view */
+@media only screen and (max-width: 768px) {
+  .hero-container h1 {
+    font-size: 32px;
+  }
+
+  .hero-container p {
+    font-size: 14px;
+  }
+}
+
+/* Mobile view */
 @media only screen and (max-width: 400px) {
   .hero-layout {
     justify-content: center;
     align-items: center;
   }
+
   .hero-container {
     margin-left: 0;
     border-radius: 10px;
@@ -56,15 +69,40 @@
     flex-direction: column;
     background-color: #fbae33;
     color: white;
+    padding: 10px;
+    text-align: center;
   }
+
   .hero-container h1 {
     font-size: 20px;
-    height: 30px;
-    margin: 15px 0px;
+    margin: 15px 0;
     color: white;
   }
+
   .hero-container p {
-    font-size: 10px;
+    font-size: 12px;
     color: white;
+  }
+
+  .hero-container button {
+    font-size: 14px;
+    padding: 0.5em 1em;
+    margin-block: 10px;
+  }
+}
+
+/* Large devices */
+@media only screen and (min-width: 1200px) {
+  .hero-container h1 {
+    font-size: 56px;
+  }
+
+  .hero-container p {
+    font-size: 18px;
+  }
+
+  .hero-container button {
+    font-size: 16px;
+    padding: 0.75em 1.5em;
   }
 }

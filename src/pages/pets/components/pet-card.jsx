@@ -4,7 +4,7 @@ import { useMutation } from "react-query";
 import { axiosInstance } from "../../../utils/axios";
 const { Meta } = Card;
 
-const PetCard = ({ image, title, description, id }) => {
+const PetCard = ({ image, title, description, id, isAdopted }) => {
   const mutation = useMutation("adoption", () => axiosInstance.post("/adoption", { pet_id: id }), {
     onSuccess: () => {
       message.success("Adoption request has been sent");
@@ -30,13 +30,20 @@ const PetCard = ({ image, title, description, id }) => {
       }}
       cover={<Image src={image} height={200} style={{ objectFit: "cover" }} />}
       actions={[
-        <Button type="primary" onClick={adoptPet}>
-          Adopt
-        </Button>,
+        isAdopted ? (
+          <Button type="primary" disabled>
+            Pet is already adopted
+          </Button>
+        ) : (
+          <Button type="primary" onClick={adoptPet}>
+            Adopt
+          </Button>
+        ),
       ]}
     >
       <Meta title={title} description={description} />
     </Card>
   );
 };
+
 export default PetCard;

@@ -3,16 +3,24 @@
 /* Navbar */
 .ant-layout-header {
   background-color: #001529; /* Set background color for navbar */
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 20px;
 }
 
+/* Typography */
 .ant-typography {
   margin: 0; /* Remove margin for typography */
 }
 
+/* Menu */
 .ant-menu-horizontal {
   background-color: #001529; /* Set background color for menu items */
+  border-bottom: none; /* Remove bottom border */
 }
 
+/* Menu Items */
 .ant-menu-horizontal .ant-menu-item {
   margin: 0; /* Remove margin for menu items */
 }
@@ -45,6 +53,22 @@
 }
 
 /* Media Queries */
+@media screen and (max-width: 1200px) {
+  .ant-layout-header {
+    padding: 0 15px; /* Adjust padding for large tablets and desktops */
+  }
+}
+
+@media screen and (max-width: 992px) {
+  .ant-layout-header {
+    padding: 0 10px; /* Adjust padding for tablets and smaller desktops */
+  }
+
+  .ant-menu-horizontal .ant-menu-item {
+    padding: 0 10px; /* Adjust padding for menu items */
+  }
+}
+
 @media screen and (max-width: 768px) {
   .menu-icon {
     display: block; /* Display menu icon on small devices */
@@ -58,7 +82,26 @@
     display: none; /* Hide horizontal menu on small devices */
   }
 
+  .ant-menu-vertical {
+    background-color: #001529; /* Set background color for vertical menu */
+  }
+
   .ant-menu-item {
     display: block !important; /* Display menu items as block elements */
+    padding: 10px 15px; /* Adjust padding for vertical menu items */
+  }
+}
+
+@media screen and (max-width: 576px) {
+  .ant-layout-header {
+    padding: 0 5px; /* Adjust padding for extra small devices */
+  }
+
+  .menu-icon {
+    font-size: 18px; /* Adjust font size for menu icon */
+  }
+
+  .ant-menu-item {
+    padding: 8px 10px; /* Adjust padding for vertical menu items */
   }
 }
