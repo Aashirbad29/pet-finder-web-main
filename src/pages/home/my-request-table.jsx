@@ -34,10 +34,23 @@ const MyRequestTable = () => {
         />
       ),
     },
-    { title: "Adoption Status", key: "adoption_status", render: (data) => <p>{data.status ? "Adopted" : "Not Adopted"}</p> },
+    {
+      title: "Adoption Status",
+      key: "adoption_status",
+      render: (data) => <p>{data.status ? "Adopted" : "Not Adopted"}</p>,
+    },
   ];
 
-  const { data, isLoading } = useQuery("adoptions", () => axiosInstance.get("/adoption/my-requests"), { initialData: [] });
+  const { data, isLoading } = useQuery("adoptions", () => axiosInstance.get("/adoption/my-requests"), {
+    initialData: [],
+    select: (data) => ({
+      ...data,
+      data: {
+        ...data.data,
+        result: data.data.result.sort((a, b) => new Date(b.request_date) - new Date(a.request_date)),
+      },
+    }),
+  });
 
   return (
     <>
