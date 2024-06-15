@@ -11,6 +11,7 @@ import About from "./pages/about/about";
 import SignUp from "./pages/sign-up/sign-up";
 import HomeLayout from "./layout/home-layout";
 import PageNotFound from "./pages/pagenotfound/pagenotfound";
+import RescueRequest from "./pages/rescuse-request/rescue-request";
 
 function App() {
   return (
@@ -31,6 +32,7 @@ function App() {
           <Route element={<ProtectedRoute />}>
             <Route path="/dashboard" element={<DashboardLayout />}>
               <Route index element={<Dashboard />} />
+              <Route path="/dashboard/rescue-request" element={<RescueRequest />} />
             </Route>
           </Route>
         </Routes>

@@ -3,6 +3,7 @@ import { Button, Form, Input, InputNumber, message } from "antd";
 import { register } from "../../api/login";
 import Cookies from "js-cookie";
 import { useNavigate } from "react-router-dom";
+import "../../styles/SignUp.css";
 
 const SignUp = () => {
   const history = useNavigate();
@@ -48,51 +49,53 @@ const SignUp = () => {
   };
 
   return (
-    <div className="sign-up-page" style={{ display: "flex", flexDirection: "column", alignItems: "center" }}>
-      <header style={{ marginBottom: "20px" }}>
-        <h1>Sign Up for Pet Finder</h1>
-        <p>Create your account to start finding and adopting pets.</p>
-      </header>
-      <Form layout="vertical" name="sign-up-form" style={{ width: 500 }} onFinish={onFinish}>
-        <Form.Item label="Name" name="name" rules={[{ required: true, message: "Please input name" }]}>
-          <Input />
-        </Form.Item>
+    <div className="sign-up-page">
+      <div className="sign-up-container">
+        <header className="sign-up-header">
+          <h1>Sign Up for Pet Finder</h1>
+          <p>Create your account to start finding and adopting pets.</p>
+        </header>
+        <Form layout="vertical" name="sign-up-form" onFinish={onFinish}>
+          <Form.Item label="Name" name="name" rules={[{ required: true, message: "Please input name" }]}>
+            <Input />
+          </Form.Item>
 
-        <Form.Item label="Email" name="email" rules={[{ required: true, message: "Please input email" }]}>
-          <Input type="email" />
-        </Form.Item>
+          <Form.Item label="Email" name="email" rules={[{ required: true, message: "Please input email" }]}>
+            <Input type="email" />
+          </Form.Item>
 
-        <Form.Item label="Address" name="address" rules={[{ required: true, message: "Please input address" }]}>
-          <Input />
-        </Form.Item>
+          <Form.Item label="Address" name="address" rules={[{ required: true, message: "Please input address" }]}>
+            <Input />
+          </Form.Item>
 
-        <Form.Item
-          label="Phone"
-          name="phone_number"
-          rules={[{ required: true, message: "Please input phone" }, { validator: validatePhoneNumber }]}
-        >
-          <InputNumber style={{ width: "100%" }} />
-        </Form.Item>
+          <Form.Item
+            label="Phone"
+            name="phone_number"
+            rules={[{ required: true, message: "Please input phone" }, { validator: validatePhoneNumber }]}
+          >
+            <InputNumber style={{ width: "100%" }} />
+          </Form.Item>
 
-        <Form.Item
-          label="Password"
-          name="password"
-          rules={[
-            {
-              required: true,
-              validator: validatePassword,
-            },
-          ]}
-        >
-          <Input.Password />
-        </Form.Item>
+          <Form.Item
+            label="Password"
+            name="password"
+            rules={[
+              {
+                required: true,
+                validator: validatePassword,
+              },
+            ]}
+          >
+            <Input.Password />
+          </Form.Item>
 
-        <Form.Item>
-          <Button type="primary" htmlType="submit">
-            Submit
-          </Button>
-        </Form.Item>
-      </Form>
+          <Form.Item>
+            <Button type="primary" htmlType="submit">
+              Submit
+            </Button>
+          </Form.Item>
+        </Form>
+      </div>
     </div>
   );
 };

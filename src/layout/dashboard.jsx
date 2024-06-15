@@ -19,6 +19,11 @@ const DashboardLayout = () => {
       icon: <DashboardOutlined />,
       label: "My Requests",
     },
+    {
+      key: "/dashboard/rescue-request",
+      icon: <DashboardOutlined />,
+      label: "Rescue Request",
+    },
   ];
 
   const onMenuClick = (event) => {

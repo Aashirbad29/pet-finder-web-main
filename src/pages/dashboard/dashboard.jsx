@@ -8,10 +8,6 @@ const Dashboard = () => {
     <>
       <Title level={4}>My Requests</Title>
       <MyRequestTable />
-      <Title level={4} style={{ marginTop: 24 }}>
-        Rescue Requests
-      </Title>
-      <RescueRequestTable />
     </>
   );
 };

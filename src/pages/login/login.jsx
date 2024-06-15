@@ -3,6 +3,7 @@ import { Button, Form, Input, message } from "antd";
 import { Link, useNavigate } from "react-router-dom";
 import { login } from "../../api/login";
 import Cookies from "js-cookie";
+import "../../styles/Login.css";
 
 const Login = () => {
   const history = useNavigate();
@@ -26,38 +27,40 @@ const Login = () => {
   };
 
   return (
-    <div className="login-page" style={{ display: "flex", flexDirection: "column", alignItems: "center" }}>
-      <header style={{ marginBottom: "20px" }}>
-        <h1>Login to Pet Finder</h1>
-        <p>Welcome back! Please login to your account.</p>
-      </header>
-      <Form layout="vertical" name="login-form" style={{ width: 500 }} onFinish={onFinish}>
-        <Form.Item label="Email" name="email" rules={[{ required: true, message: "Please input email" }]}>
-          <Input />
-        </Form.Item>
+    <div className="login-page">
+      <div className="login-container">
+        <header className="login-header">
+          <h1>Login to Pet Finder</h1>
+          <p>Welcome back! Please login to your account.</p>
+        </header>
+        <Form layout="vertical" name="login-form" onFinish={onFinish}>
+          <Form.Item label="Email" name="email" rules={[{ required: true, message: "Please input email" }]}>
+            <Input />
+          </Form.Item>
 
-        <Form.Item
-          label="Password"
-          name="password"
-          rules={[
-            {
-              required: true,
-              message: "Please input your password!",
-            },
-          ]}
-        >
-          <Input.Password />
-        </Form.Item>
+          <Form.Item
+            label="Password"
+            name="password"
+            rules={[
+              {
+                required: true,
+                message: "Please input your password!",
+              },
+            ]}
+          >
+            <Input.Password />
+          </Form.Item>
 
-        <Form.Item>
-          <Button type="primary" htmlType="submit">
-            Submit
-          </Button>
-          <span style={{ marginLeft: "10px" }}>
-            or <Link to="/sign-up">Create an account</Link>
-          </span>
-        </Form.Item>
-      </Form>
+          <Form.Item>
+            <Button type="primary" htmlType="submit">
+              Submit
+            </Button>
+            <span style={{ marginLeft: "10px" }}>
+              or <Link to="/sign-up">Create an account</Link>
+            </span>
+          </Form.Item>
+        </Form>
+      </div>
     </div>
   );
 };

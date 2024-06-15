@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import { Button, Form, Input, message, Table } from "antd";
 import { useMutation, useQuery, useQueryClient } from "react-query";
 import { axiosInstance } from "../../utils/axios";
@@ -9,7 +9,7 @@ const RescueRequestTable = () => {
 
   const createMutation = useMutation({
     mutationFn: (newRequest) => axiosInstance.post("/rescues", newRequest),
-    onSuccess: () => {
+    onSuccess: (newData) => {
       message.success("Rescue request created successfully");
       form.resetFields();
       queryClient.invalidateQueries("myRescues");
@@ -17,6 +17,17 @@ const RescueRequestTable = () => {
     onError: (error) => {
       message.error(error.response.data?.msg || "Error creating rescue request");
     },
+  });
+
+  const { data, isLoading } = useQuery("myRescues", () => axiosInstance.get("/rescues/my-rescues"), {
+    initialData: [],
+    select: (data) => ({
+      ...data,
+      data: {
+        ...data.data,
+        result: data.data.result.sort((a, b) => new Date(b.createdAt) - new Date(a.createdAt)),
+      },
+    }),
   });
 
   const columns = [
@@ -51,8 +62,6 @@ const RescueRequestTable = () => {
     },
   ];
 
-  const { data, isLoading } = useQuery("myRescues", () => axiosInstance.get("/rescues/my-rescues"), { initialData: [] });
-
   const onFinish = (values) => {
     createMutation.mutate(values);
   };
@@ -67,7 +76,6 @@ const RescueRequestTable = () => {
           Submit Rescue Request
         </Button>
       </Form>
-
       <Table loading={isLoading} bordered columns={columns} dataSource={data?.data?.result} rowKey="_id" />
     </>
   );
