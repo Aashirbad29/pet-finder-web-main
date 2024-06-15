@@ -1,3 +1,4 @@
+import React from "react";
 import { Image, Table } from "antd";
 import { useQuery } from "react-query";
 import { axiosInstance } from "../../utils/axios";
@@ -23,7 +24,15 @@ const MyRequestTable = () => {
     {
       title: "Photo",
       key: "photo",
-      render: (data) => <Image width={100} height={100} preview style={{ objectFit: "contain" }} src={data.pet_id.photo} />,
+      render: (data) => (
+        <Image
+          width={100}
+          height={100}
+          preview={true} // Set to false to disable preview
+          style={{ objectFit: "contain" }}
+          src={`http://localhost:4000/${data.pet_id.photo}`} // Adjust the path to match your server setup
+        />
+      ),
     },
     { title: "Adoption Status", key: "adoption_status", render: (data) => <p>{data.status ? "Adopted" : "Not Adopted"}</p> },
   ];

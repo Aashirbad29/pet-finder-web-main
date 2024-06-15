@@ -13,7 +13,6 @@ const PetCard = ({ image, title, description, id, isAdopted }) => {
       if (error.response.status === 401) {
         return message.error("Please login to continue");
       }
-
       message.error(error.response.data.msg);
     },
   });
@@ -28,7 +27,7 @@ const PetCard = ({ image, title, description, id, isAdopted }) => {
         width: 300,
         boxShadow: "5px 8px 24px 5px rgba(208, 216, 243, 0.6)",
       }}
-      cover={<Image src={image} height={200} style={{ objectFit: "cover" }} />}
+      cover={<Image src={image} height={200} style={{ objectFit: "contain" }} />}
       actions={[
         isAdopted ? (
           <Button type="primary" disabled>

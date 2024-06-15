@@ -94,7 +94,7 @@ const Pets = () => {
                 </p>
               </div>
             }
-            image={data.photo}
+            image={`http://localhost:4000/${data.photo}`} // Pass the formatted image URL
             isAdopted={data.is_adopted} // Pass the adoption status prop
           />
         ))}
