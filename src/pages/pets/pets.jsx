@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import PetCard from "./components/pet-card";
 import { useQuery } from "react-query";
 import { axiosInstance } from "../../utils/axios";
-import { Flex, Spin, Tag, Button, Select, Slider } from "antd";
+import { Flex, Spin, Tag, Select, Slider } from "antd";
 
 const { Option } = Select;
 
@@ -12,7 +12,7 @@ const Pets = () => {
   const [speciesFilter, setSpeciesFilter] = useState("all"); // State to manage species filter
   const [vaccinationFilter, setVaccinationFilter] = useState("all"); // State to manage vaccination filter
   const [adoptionFilter, setAdoptionFilter] = useState("all"); // State to manage adoption filter
-  const [ageFilter, setAgeFilter] = useState([0, 10]); // State to manage age filter
+  const [ageFilter, setAgeFilter] = useState([1, 18]); // State to manage age filter
 
   const handleSpeciesFilterChange = (value) => {
     setSpeciesFilter(value); // Update species filter state when filter changes
@@ -71,7 +71,7 @@ const Pets = () => {
         </Select>
         <div style={{ width: 300, display: "inline-block" }}>
           <span>Age: </span>
-          <Slider range defaultValue={[0, 10]} max={10} onChange={handleAgeFilterChange} />
+          <Slider range defaultValue={[1, 18]} min={1} max={18} onChange={handleAgeFilterChange} />
         </div>
       </div>
 
